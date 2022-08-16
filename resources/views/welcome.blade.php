@@ -9,6 +9,8 @@
 </head>
 
 <body class="antialiased">
+    @include('nav')
+
     <h2>Hello Laravel</h2>
     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veritatis expedita, aspernatur aliquid ratione
         voluptatum quasi similique quam dicta. Animi, veritatis aut similique voluptatem inventore dolore saepe magni
