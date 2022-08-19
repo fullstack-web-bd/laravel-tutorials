@@ -1,56 +1,88 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+@extends('layouts.master')
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+@section('styles')
+    <style>
+        /* body {
+            background-color: red;
+        } */
+    </style>
+@endsection
 
-    <title>Laravel Basic</title>
-</head>
+@section('title')
+    Home Page | {{ env('APP_NAME') }}
+@endsection
 
-@php
-    // dd($users_obj);
-@endphp
+@section('content')
+    <div class="container">
+        <h2>Home Page</h2>
 
-<body class="antialiased">
-    @include('nav')
+        <button class="btn btn-primary">Go to Welcome Page</button>
+        <div>
+            <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                            aria-expanded="true" aria-controls="collapseOne">
+                            Accordion Item #1
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <strong>This is the first item's accordion body.</strong> It is shown by default, until the
+                            collapse plugin adds the appropriate classes that we use to style each element. These
+                            classes control the overall appearance, as well as the showing and hiding via CSS
+                            transitions. You can modify any of this with custom CSS or overriding our default variables.
+                            It's also worth noting that just about any HTML can go within the
+                            <code>.accordion-body</code>, though the transition does limit overflow.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Accordion Item #2
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <strong>This is the second item's accordion body.</strong> It is hidden by default, until
+                            the collapse plugin adds the appropriate classes that we use to style each element. These
+                            classes control the overall appearance, as well as the showing and hiding via CSS
+                            transitions. You can modify any of this with custom CSS or overriding our default variables.
+                            It's also worth noting that just about any HTML can go within the
+                            <code>.accordion-body</code>, though the transition does limit overflow.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Accordion Item #3
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <strong>This is the third item's accordion body.</strong> It is hidden by default, until the
+                            collapse plugin adds the appropriate classes that we use to style each element. These
+                            classes control the overall appearance, as well as the showing and hiding via CSS
+                            transitions. You can modify any of this with custom CSS or overriding our default variables.
+                            It's also worth noting that just about any HTML can go within the
+                            <code>.accordion-body</code>, though the transition does limit overflow.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
 
-    <h2>Home Page</h2>
-    <p>
-        {{ $name }}
-    </p>
-    <p>
-        {{ $age }}
-    </p>
-    <p>
-    <h4>Foreach</h4>
-    <ul>
-        @foreach ($users as $key => $user)
-            <li> {{ $key + 1 }}) {{ $user }}</li>
-        @endforeach
-
-        @foreach ($users as $user)
-            <li> {{ $loop->index + 1 }}) {{ $user }}</li>
-        @endforeach
-
-    </ul>
-
-    <h4>For</h4>
-    <ul>
-        @for ($i = 0; $i < count($users); $i++)
-            <li>{{ $users[$i] }}</li>
-        @endfor
-    </ul>
-    </p>
-
-    <h4>Users Object of Array</h4>
-    <ul>
-        @foreach ($users_obj as $user_obj)
-            <li> {{ $user_obj->name }}</li>
-            <li> {{ $user_obj->age }}</li>
-            <hr>
-        @endforeach
-    </ul>
-</body>
-
-</html>
+@section('scripts')
+    <script>
+        // alert('Welcome');
+    </script>
+@endsection

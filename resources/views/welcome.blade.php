@@ -1,20 +1,19 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+@extends('layouts.master')
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+@section('title')
+    Welcome | {{ env('APP_NAME') }}
+@endsection
 
-    <title>Laravel Basic</title>
-</head>
-
-<body class="antialiased">
-    @include('nav')
-
-    <h2>Hello Laravel</h2>
-    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veritatis expedita, aspernatur aliquid ratione
-        voluptatum quasi similique quam dicta. Animi, veritatis aut similique voluptatem inventore dolore saepe magni
-        neque reprehenderit consectetur.</p>
-</body>
-
-</html>
+@section('content')
+    <div class="bg-info p-5">
+        <div class="container">
+            <h2>Hello Laravel</h2>
+            <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veritatis expedita, aspernatur aliquid ratione
+                voluptatum quasi similique quam dicta. Animi, veritatis aut similique voluptatem inventore dolore saepe
+                magni
+                neque reprehenderit consectetur.
+            </p>
+        </div>
+    </div>
+@endsection
