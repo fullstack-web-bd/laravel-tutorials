@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\TodosController;
 use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\DocumentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,11 @@ Route::view('/welcome', 'welcome')->name('welcome.index');
 // Category Create
 Route::get('/category/create', [CategoriesController::class, 'create'])->name('categories.create');
 Route::post('/category/store', [CategoriesController::class, 'store'])->name('categories.store');
+
+// Documents
+Route::resource('documents', DocumentController::class)->only([
+    'create', 'store'
+]);
 
 // Route::prefix('todos')->controller(TodosController::class)->name('todos.')->group(function () {
 //     Route::get('', 'index')->name('index');

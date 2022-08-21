@@ -5,19 +5,19 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="card card-body p-4">
-                    <h2>New Category</h2>
-                    <form action="{{ route('categories.store') }}" method="POST" enctype="multipart/form-data">
+                    <h2>Add Documents</h2>
+                    <form action="{{ route('documents.store') }}" method="POST" enctype="multipart/form-data">
                         @include('partials.messages')
 
                         @csrf
-                        <input type="text" name="name" placeholder="Category Name" class="form-control" value="{{ old('name') }}">
+                        <input type="text" name="name" placeholder="Document Name" class="form-control" value="{{ old('name') }}">
 
                         <div class="row mt-2">
                             <div class="col-6">
-                                Category Image
+                                Document documents (multiple)
                             </div>
                             <div class="col-6">
-                                <input type="file" name="image" id="image" class="form-control">
+                                <input type="file" name="documents[]" id="documents" class="form-control" multiple>
                             </div>
                         </div>
 
@@ -33,24 +33,25 @@
                         <tr>
                             <th>Sl</th>
                             <th>Name</th>
-                            <th>Image</th>
+                            <th>Document Link</th>
                         </tr>
                     </thead>
 
                     <tbody>
-                        @foreach ($categories as $category)
+                        @foreach ($documents as $document)
                             <tr>
                                 <td>{{ $loop->index + 1 }}</td>
-                                <td>{{ $category->name }}</td>
+                                <td>{{ $document->name }}</td>
                                 <td>
-                                    {{-- <img src="{{ asset($category->image) }}" alt="" width="100"> --}}
-                                    <img src="{{ Storage::url($category->image) }}" alt="" width="100">
+                                    <a href="{{ Storage::url($document->file) }}" target="_blank">
+                                        {{ Storage::url($document->file) }}
+                                    </a>
                                 </td>
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
-                {{ $categories->links() }}
+                {{ $documents->links() }}
             </div>
         </div>
     </div>
