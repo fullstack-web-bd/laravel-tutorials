@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\TodosController;
+use App\Http\Controllers\CategoriesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,10 @@ Route::get('/hello', [TestController::class, 'hello'])->name('tests.hello');
 Route::get('show/{id}', [TestController::class, 'show'])->name('tests.show');
 
 Route::view('/welcome', 'welcome')->name('welcome.index');
+
+// Category Create
+Route::get('/category/create', [CategoriesController::class, 'create'])->name('categories.create');
+Route::post('/category/store', [CategoriesController::class, 'store'])->name('categories.store');
 
 // Route::prefix('todos')->controller(TodosController::class)->name('todos.')->group(function () {
 //     Route::get('', 'index')->name('index');
