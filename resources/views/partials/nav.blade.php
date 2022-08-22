@@ -11,13 +11,10 @@
                     <a class="nav-link active" aria-current="page" href="{{ route('index') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('welcome.index') }}">Welcome</a>
+                    <a class="nav-link" href="{{ route('tasks.index') }}">Tasks</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('categories.create') }}">Categories</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('documents.create') }}">Documents</a>
+                    <a class="nav-link" href="{{ route('tasks.create') }}">New Task</a>
                 </li>
             </ul>
         </div>
