@@ -11,10 +11,7 @@
                     <a class="nav-link active" aria-current="page" href="{{ route('index') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('tasks.index') }}">Tasks</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('tasks.create') }}">New Task</a>
+                    <a class="nav-link" href="{{ route('products.create') }}">New Product</a>
                 </li>
             </ul>
         </div>

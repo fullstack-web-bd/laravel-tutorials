@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TasksController;
 
@@ -14,5 +15,8 @@ use App\Http\Controllers\TasksController;
 |
 */
 
-Route::get('/', [TasksController::class, 'index'])->name('index');
-Route::resource('tasks', TasksController::class);
+Route::get('/', [ProductsController::class, 'index'])->name('index');
+Route::get('/category/{id}', [ProductsController::class, 'category'])->name('category.show');
+Route::get('/tag/{id}', [ProductsController::class, 'tag'])->name('tag.show');
+Route::get('/products/create', [ProductsController::class, 'create'])->name('products.create');
+Route::post('/products/store', [ProductsController::class, 'store'])->name('products.store');
