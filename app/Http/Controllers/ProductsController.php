@@ -7,10 +7,21 @@ use App\Models\Product;
 use App\Models\Tag;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class ProductsController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['dbExamples', 'index', 'show']);
+    }
+
     public function index()
     {
         $products = Product::get();
@@ -135,10 +146,11 @@ class ProductsController extends Controller
 
     public function store(Request $request)
     {
-        $product = new Product();
-        $product->name = $request->name;
-        $product->price = $request->price;
+        $product              = new Product();
+        $product->name        = $request->name;
+        $product->price       = $request->price;
         $product->category_id = $request->category_id;
+        $product->user_id     = Auth::user()->id;
         $product->save();
 
         // Save the tags in pivot table

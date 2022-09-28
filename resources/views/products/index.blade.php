@@ -36,6 +36,11 @@
                                 </span>
                             @endforeach
                         </p>
+                        @if ($product->user_id)
+                            <p>
+                                Created by - {{ Auth::user()->name }}
+                            </p>
+                        @endif
                     </div>
                 </div>
             @endforeach

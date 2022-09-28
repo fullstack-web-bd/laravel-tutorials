@@ -25,3 +25,7 @@ Route::get('/category/{id}', [ProductsController::class, 'category'])->name('cat
 Route::get('/tag/{id}', [ProductsController::class, 'tag'])->name('tag.show');
 Route::get('/products/create', [ProductsController::class, 'create'])->name('products.create');
 Route::post('/products/store', [ProductsController::class, 'store'])->name('products.store');
+
+// Authentication routes.
+Auth::routes();
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
