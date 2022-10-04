@@ -1,6 +1,4 @@
-@extends('layouts.master')
-
-@section('content')
+<x-app-layout>
     <div class="container">
         <h2 class="my-3">New Product</h2>
 
@@ -44,4 +42,4 @@
             </form>
         </div>
     </div>
-@endsection
+</x-app-layout>

@@ -18,14 +18,21 @@ use App\Http\Controllers\TasksController;
 Route::get('/', [ProductsController::class, 'index'])->name('index');
 Route::get('/db-examples', [ProductsController::class, 'dbExamples'])->name('index.db');
 
-
-
-
 Route::get('/category/{id}', [ProductsController::class, 'category'])->name('category.show');
 Route::get('/tag/{id}', [ProductsController::class, 'tag'])->name('tag.show');
 Route::get('/products/create', [ProductsController::class, 'create'])->name('products.create');
 Route::post('/products/store', [ProductsController::class, 'store'])->name('products.store');
 
 // Authentication routes.
-Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Auth::routes();
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+require __DIR__.'/auth.php';

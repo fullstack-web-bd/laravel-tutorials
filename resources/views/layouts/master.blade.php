@@ -7,13 +7,17 @@
 
     {{-- Injectable styles --}}
     @yield('styles')
+
+    <!-- Scripts -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body class="antialiased">
-    @include('partials.nav')
+    @include('layouts.navigation')
 
     <div class="my-5">
         {{-- Dynamically Injectable Content --}}
+        {{ $slot }}
         @yield('content')
     </div>
 
