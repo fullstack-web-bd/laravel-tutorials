@@ -15,9 +15,12 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('products.create')" :active="request()->routeIs('products.create')">
-                        {{ __('+ New Product') }}
-                    </x-nav-link>
+
+                    @if (Gate::allows('create-product'))
+                        <x-nav-link :href="route('products.create')" :active="request()->routeIs('products.create')">
+                            {{ __('+ New Product') }}
+                        </x-nav-link>
+                    @endif
                 </div>
             </div>
 

@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 
 class ProductsController extends Controller
 {
@@ -138,6 +139,19 @@ class ProductsController extends Controller
 
     public function create()
     {
+        // if (! Gate::allows('create-product')) {
+        //     abort(403, 'You are not authorized to create a product.');
+        // }
+        // $product = Product::find(13);
+        // if (! Gate::allows('update-product', $product)) {
+        //     abort(403);
+        // }
+
+        // Spatie permission
+        if (!Auth()->user()->hasPermissionTo('product.create')) {
+            abort(403, 'You are not authorized to create a product.');
+        }
+
         $categories = Category::get();
         $tags = Tag::get();
 
@@ -146,6 +160,19 @@ class ProductsController extends Controller
 
     public function store(Request $request)
     {
+        // Authorization
+        if (! Gate::allows('create-product')) {
+            abort(403, 'You are not authorized to create a product.');
+        }
+
+        // $product = Product::find(13);
+        // if (! Gate::allows('update-product', $product)) {
+        //     abort(403);
+        // }
+
+        // Request validation
+
+        // Store
         $product              = new Product();
         $product->name        = $request->name;
         $product->price       = $request->price;
