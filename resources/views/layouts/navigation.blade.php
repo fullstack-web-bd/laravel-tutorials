@@ -5,7 +5,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
+                    <a href="{{ route('index') }}">
                         <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
                     </a>
                 </div>
@@ -13,12 +13,12 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                        {{ __('messages.dashboard') }}
                     </x-nav-link>
 
                     @if (Gate::allows('create-product'))
                         <x-nav-link :href="route('products.create')" :active="request()->routeIs('products.create')">
-                            {{ __('+ New Product') }}
+                            {{ __('messages.new_product') }}
                         </x-nav-link>
                     @endif
                 </div>
@@ -58,11 +58,14 @@
 
             @guest
                 <div class="-mr-2 flex items-center">
+                    <a href="{{ route(Route::currentRouteName()) }}?lang={{ request()->lang === 'bn' ? 'en' : 'bn' }}" class="bg-blue-500 px-2 text-white mr-3">
+                        {{ request()->lang === 'bn' ? 'বাংলা' : 'EN' }}
+                    </a>
                     <x-responsive-nav-link :href="route('login')" :active="request()->routeIs('login')">
-                        {{ __('Login') }}
+                        {{ __('messages.login') }}
                     </x-responsive-nav-link>
                     <x-responsive-nav-link :href="route('register')" :active="request()->routeIs('register')">
-                        {{ __('Register') }}
+                        {{ __('messages.register') }}
                     </x-responsive-nav-link>
                 </div>
             @endguest

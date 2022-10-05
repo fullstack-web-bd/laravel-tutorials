@@ -95,14 +95,14 @@ class ProductsController extends Controller
 
 
         $query = DB::table('products', 'p')
-                ->select(
-                    'p.id',
-                    'p.name',
-                    'p.price',
-                    'cat.name as category_name',
-                    'cat.id as category_id'
-                )
-                ->join('categories AS cat', 'p.category_id', '=', 'cat.id');
+            ->select(
+                'p.id',
+                'p.name',
+                'p.price',
+                'cat.name as category_name',
+                'cat.id as category_id'
+            )
+            ->join('categories AS cat', 'p.category_id', '=', 'cat.id');
 
         if (request()->s) {
             $query->where('p.name', 'LIKE', '%' . request()->s . '%');
@@ -161,7 +161,7 @@ class ProductsController extends Controller
     public function store(Request $request)
     {
         // Authorization
-        if (! Gate::allows('create-product')) {
+        if (!Gate::allows('create-product')) {
             abort(403, 'You are not authorized to create a product.');
         }
 
